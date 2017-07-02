@@ -51,5 +51,12 @@ var app = new Vue({
       this.completed = false;
       this.uncomplete = true;
     }
+  },
+  computed: {
+    uncompleteCount: function() {
+      return this.todos.filter(function(todo) {
+        return !todo.complete
+      }).length;
+    }
   }
 })

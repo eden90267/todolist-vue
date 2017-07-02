@@ -15,17 +15,22 @@
 <body>
   <div class="container">
   <div id="app">
-  <input type="text" placeholder="請輸入待辦事項" @keyup.enter="addTodo(newTodo)" v-model="newTodo" class="form-control" autofocus/>
-  <h2>事項列表</h2>
-  <ul class="list-group">
-    <li v-for="todo in filterTodos" :key="todo.id" class="list-group-item">
-      <input type="checkbox" v-model="todo.complete" /> {{todo.content}} - <a href="#" @click.prevent="removeTodo(todo)">刪除</a>
-    </li>
-  </ul>
-  <button @click="showAll()" class="btn btn-primary" v-bind:class="{active: all}">全部顯示</button>
-  <button @click="showCompleted()" class="btn btn-primary" v-bind:class="{active: completed}">已處理</button>
-  <button @click="showUncomplete()" class="btn btn-primary" v-bind:class="{active: uncomplete}">未處理</button>
-</div>
+    <input type="text" placeholder="請輸入待辦事項" @keyup.enter="addTodo(newTodo)" v-model="newTodo" class="form-control" autofocus/>
+    <div class="clearfix">
+      <h2 class="pull-left">事項列表</h2>
+      <h5 class="pull-right uncomplete-count">
+    待處理項目：{{uncompleteCount}}
+  </h5>
+    </div>
+    <ul class="list-group">
+      <li v-for="todo in filterTodos" :key="todo.id" class="list-group-item">
+        <input type="checkbox" v-model="todo.complete" /> {{todo.content}} - <a href="#" @click.prevent="removeTodo(todo)">刪除</a>
+      </li>
+    </ul>
+    <button @click="showAll()" class="btn btn-primary" v-bind:class="{active: all}">全部顯示</button>
+    <button @click="showCompleted()" class="btn btn-primary" v-bind:class="{active: completed}">已處理</button>
+    <button @click="showUncomplete()" class="btn btn-primary" v-bind:class="{active: uncomplete}">未處理</button>
+  </div>
 </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
 
